@@ -1,0 +1,20 @@
+.home {
+  width: 100%;
+  background-color: antiquewhite;
+}
+.home > ul {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.home > ul li {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-content: center;
+}
+.home > ul li span {
+  font-size: 16px;
+  color: red;
+}
