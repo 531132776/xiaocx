@@ -15,14 +15,36 @@ const {
 const SubMenu = Menu.SubMenu;
 
 class App extends Component {
-  state = {
-    collapsed: false
+  constructor(props){
+    super(props)
+    console.log(this.props)
+    this.state = {
+      collapsed: false,
+      students : ["张三然","李慧思","赵思然","孙力气","钱流量"],
+    }
   }
+  
   onCollapse = (collapsed) => {
     console.log(collapsed);
     this.setState({collapsed})
   }
+  componentDidMount(){
+    console.log(this.props)
+  }
+  componentWillMount(){
+    console.log(this.props)
+  }
+  
   render() {
+    console.log(this.props)
+    var students = ["张三然","李慧思","赵思然","孙力气","钱流量"];
+    var arr = () =>{
+      var res = [];
+      for(let i in students){
+        res.push(<li key={i}>{students[i]}</li>)
+      }
+      return res
+    }
     return (
       <Router>
         <Layout style={{ minHeight: '100vh' }}>
@@ -70,8 +92,19 @@ class App extends Component {
               <Breadcrumb.Item>Bill</Breadcrumb.Item>
             </Breadcrumb>
             <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-              Bill is a cat.
+              <ul>
+                {
+                  this.state.students.map( (v,i) => {
+                    return <li key={i}>{v}:{i}</li>
+                  })
+                }
+              </ul>
+              <ul>
+                {arr(this.props.students)}
+              </ul>
+              <Route path="/home" component={Home} />
             </div>
+            
           </Content>
           <Footer style={{ textAlign: 'center' }}>
             Ant Design ©2018 Created by Ant UED
